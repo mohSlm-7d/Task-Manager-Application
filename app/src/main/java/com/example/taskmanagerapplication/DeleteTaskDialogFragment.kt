@@ -37,16 +37,14 @@ class DeleteTaskDialogFragment: DialogFragment(R.layout.fragment_delete_task_dia
 
 
             deleteBtn.setOnClickListener{
-            MainActivity.Tasks.forEach{task->{
-                if(task.name().toString() == taskToDelete){
-                    MainActivity.Tasks.remove(task)
-                    MainActivity.deletedTasks.add(task)
+                MainActivity.Tasks.forEach{
+                    if(it.name().toString() == taskToDelete){
+                        MainActivity.Tasks.removeAt(MainActivity.Tasks.indexOf(it))
+                        MainActivity.deletedTasks.add(it)
+                    }
                 }
-            }}
-                //deleteSpinner?.adapter
-                adapter.clear()
                 dismiss()
-        }
+            }
 
     }
 }
